@@ -31,7 +31,7 @@ const AuthedUser = (user) => {
 
 export default function App() {
     const [user, setUser] = useState(null);
-    const [customState, setCustomState] = useState(null);
+    // const [customState, setCustomState] = useState(null);
 
     useEffect(() => {
         const unsubscribe = Hub.listen('auth', ({payload: {event, data}}) => {
@@ -42,9 +42,9 @@ export default function App() {
                 case 'signOut':
                     setUser(null);
                     break;
-                case 'customOAuthState':
-                    setCustomState(data);
-                    break;
+                // case 'customOAuthState':
+                //     setCustomState(data);
+                //     break;
                 default:
                     break;
             }
