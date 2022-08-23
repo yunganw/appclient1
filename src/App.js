@@ -4,6 +4,16 @@ import awsconfig from './aws-exports';
 
 Amplify.configure(awsconfig);
 
+async function globalSignOut() {
+    
+    try {
+        await Auth.signOut();
+        await Auth.signOut({ global: true });
+    } catch (error) {
+        console.log('error signing out: ', error);
+    }
+}
+
 const UnauthedUser = () => {
     return (
         <div>
@@ -22,7 +32,7 @@ const AuthedUser = (user) => {
         <div>
           <h1> Hi {user.user.username}</h1>
           You've signed in to AppClient1 <p/>
-            <button onClick={() => Auth.signOut()}>
+            <button onClick={() => globalSignOut()}>
                 Sign Out
             </button>
         </div>
