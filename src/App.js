@@ -4,6 +4,7 @@ import awsconfig from './aws-exports';
 
 Amplify.configure(awsconfig);
 
+
 async function globalSignOut() {
     
     try {
@@ -17,7 +18,7 @@ async function globalSignOut() {
 const UnauthedUser = () => {
     return (
         <div>
-            <h1>App Client1</h1>
+            <h1>Application 1</h1>
             You have not signed in yet.<p/>
             <button onClick={() => Auth.federatedSignIn()}>
                 Open Hosted UI
@@ -31,7 +32,8 @@ const AuthedUser = (user) => {
     return (
         <div>
           <h1> Hi {user.user.username}</h1>
-          You've signed in to AppClient1 <p/>
+          You've signed in to Application 1 <p/>
+            <p/>
             <button onClick={() => globalSignOut()}>
                 Sign Out
             </button>
@@ -39,33 +41,38 @@ const AuthedUser = (user) => {
     );
 };
 
+const Loading = () => {
+    return (<div id="loading"></div>);
+}
+
 export default function App() {
     const [user, setUser] = useState(null);
-    // const [customState, setCustomState] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const unsubscribe = Hub.listen('auth', ({payload: {event, data}}) => {
             switch (event) {
                 case 'signIn':
+                    setLoading(false);
                     setUser(data);
                     break;
                 case 'signOut':
+                    setLoading(false);
                     setUser(null);
                     break;
-                // case 'customOAuthState':
-                //     setCustomState(data);
-                //     break;
                 default:
                     break;
             }
         });
 
+        setLoading(true);
         Auth.currentAuthenticatedUser()
-            .then((currentUser) => setUser(currentUser))
-            .catch(() => console.log('Not signed in'));
+            .then((currentUser) => {setUser(currentUser); setLoading(false)})
+            .catch(() => {setLoading(false);console.log('Not signed in')});
 
         return unsubscribe;
     }, []);
 
-    return user ? <AuthedUser user={user}/> : <UnauthedUser />;
+    // return <Loading />;
+    return loading ? <Loading /> : (user ? <AuthedUser user={user}/> : <UnauthedUser />);
 }
