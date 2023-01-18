@@ -7,7 +7,7 @@ const awsmobile = {
     // "aws_user_pools_id": "us-east-1_XZfG3Su4R",
     // "aws_user_pools_web_client_id": "4212iscbo2r0nffqles0oga1pj",
     "aws_user_pools_id": "us-east-1_xHUNjhde9",
-    "aws_user_pools_web_client_id": "5i6t6keja3fqqj411kj0mlmad7",
+    "aws_user_pools_web_client_id": "2qm1qgh78lj52k6d4m3m769mu5",
     "domain": "amplifyreactcustauth-dev.auth.us-east-1.amazoncognito.com",
     "oauth": {
         "domain": "amplifyreactcustauth-dev.auth.us-east-1.amazoncognito.com",        "scope": [
