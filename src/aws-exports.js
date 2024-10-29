@@ -18,7 +18,7 @@ const awsmobile = {
             "aws.cognito.signin.user.admin"
         ],
         "redirectSignIn": "https://appclient1.netlify.app/",
-        "redirectSignOut": "http://appclient1.netlify.app/",
+        "redirectSignOut": "https://appclient1.netlify.app/",
         "responseType": "code"
     },
     "federationTarget": "COGNITO_USER_POOLS",
