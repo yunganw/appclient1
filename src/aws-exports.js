@@ -8,7 +8,6 @@ const awsmobile = {
     // "aws_user_pools_web_client_id": "4212iscbo2r0nffqles0oga1pj",
     "aws_user_pools_id": "us-east-1_B78sn82ah",
     "aws_user_pools_web_client_id": "23cnblsqoidevglo31a2u4rbvv",
-    "domain": "ygtest.auth.us-east-1.amazoncognito.com",
     "oauth": {
         "domain": "ygtest.auth.us-east-1.amazoncognito.com",
         "scope": [
@@ -22,7 +21,6 @@ const awsmobile = {
         "redirectSignOut": "https://appclient1.netlify.app/",
         "responseType": "code"
     },
-    "federationTarget": "COGNITO_USER_POOLS",
     "aws_cognito_username_attributes": [],
     "aws_cognito_social_providers": [],
     "aws_cognito_signup_attributes": [
